@@ -10,13 +10,17 @@ class ProductPage(BasePage):
 	def should_be_product_page(self):
 		self.should_be_product_url()
 		self.should_be_add_to_cart_button()   # проверяем что есть кнопка добавления в корзину
+		self.should_not_be_success_message()
 
 	def should_be_product_url(self):
 		assert '?promo=' in self.browser.current_url, "Not product url"
 
 	def should_be_add_to_cart_button(self):
 		assert self.is_element_present(*ProductPageLocators.CART_LINK), "No cart button"
-	
+		
+	def should_not_be_success_message(self):
+		assert self.is_not_element_present(*ProductPageLocators.CART_PRODUCT_NAME), "Success message is presented, but should not be"
+
 	def should_be_success_message(self):
 		assert self.is_element_present(*ProductPageLocators.CART_PRODUCT_NAME), "No success message"
 
@@ -29,3 +33,6 @@ class ProductPage(BasePage):
 		product_price = self.browser.find_element(*ProductPageLocators.PAGE_PRODUCT_PRICE)
 		cart_product_price = self.browser.find_element(*ProductPageLocators.CART_PRODUCT_PRICE)
 		assert product_price.text == cart_product_price.text, "Invalid product price"
+	
+	def should_be_disappeared(self):
+		assert self.is_disappeared(*ProductPageLocators.CART_PRODUCT_NAME), "Not disappeared"
