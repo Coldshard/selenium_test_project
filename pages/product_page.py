@@ -4,7 +4,7 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 	def add_product_to_cart(self):
-		cart_link = self.browser.find_element(*ProductPageLocators.CART_LINK)
+		cart_link = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_LINK)
 		cart_link.click()
 
 	def should_be_product_page(self):
@@ -16,7 +16,7 @@ class ProductPage(BasePage):
 		assert '?promo=' in self.browser.current_url, "Not product url"
 
 	def should_be_add_to_cart_button(self):
-		assert self.is_element_present(*ProductPageLocators.CART_LINK), "No cart button"
+		assert self.is_element_present(*ProductPageLocators.ADD_TO_CART_LINK), "No cart button"
 		
 	def should_not_be_success_message(self):
 		assert self.is_not_element_present(*ProductPageLocators.CART_PRODUCT_NAME), "Success message is presented, but should not be"
