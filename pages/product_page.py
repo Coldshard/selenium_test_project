@@ -9,7 +9,7 @@ class ProductPage(BasePage):
 
 	def should_be_product_page(self):
 		self.should_be_product_url()
-		self.should_be_add_to_cart_button()   # проверяем что есть кнопка добавления в корзину
+		self.should_be_add_to_cart_button()
 		self.should_not_be_success_message()
 
 	def should_be_product_url(self):
