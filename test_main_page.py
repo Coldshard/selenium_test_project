@@ -6,7 +6,7 @@ import pytest
 
 @pytest.mark.login_guest
 class TestLoginFromMainPage(object):
-	@pytest.fixture(scope="function", autouse=True)
+	#@pytest.fixture(scope="function", autouse=True)
 	def test_guest_can_go_to_login_page(self, browser):
 		link = "http://selenium1py.pythonanywhere.com"
 		page = MainPage(browser, link)
