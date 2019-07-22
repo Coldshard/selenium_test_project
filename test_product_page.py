@@ -1,9 +1,9 @@
-#from .pages.base_page import BasePage
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .pages.cart_page import CartPage
 import pytest
 import time
+
 
 def test_guest_should_see_login_link_on_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
@@ -52,14 +52,10 @@ class TestUserAddToCartFromProductPage(object):
 		login_page.should_be_login_page()
 		login_page.register_new_user(email, email)
 		login_page.should_be_authorized_user()
-
-	#params = [f'offer{x}' for x in range(1)]
-	#@pytest.mark.parametrize('param', params)
 	
 	@pytest.mark.need_review
 	def test_user_can_add_product_to_cart(self, browser):
 		link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-		#link = f'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo={param}'
 		page = ProductPage(browser, link)
 		page.open()
 		page.should_be_product_page()
